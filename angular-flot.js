@@ -81,8 +81,8 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
 
       scope.$watch('options', onOptionsChanged, true);
       scope.$watch('dataset', onDatasetChanged, true);
-      scope.$watch('onclick', onClickChange);
-      scope.$watch('onhover', onHoverChange);
+      scope.$watch('onPlotClick', onClickChange);
+      scope.$watch('onPlotClick', onHoverChange);
     }
   };
 });
