@@ -39,7 +39,9 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
         }
         scope.options.grid[eventEnableKey] = true;
         plotArea.on(eventName, function(event, pos, item) {
-          $rootScope.$apply(callback);
+          $rootScope.$apply(function() {
+            callback(event, pos, item);
+          });
         });
       };
 
