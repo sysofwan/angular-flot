@@ -6,8 +6,8 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
       dataset: '=',
       options: '=',
       callback: '=',
-      onPlotClick: '=?',
-      onPlotHover: '=?'
+      plotclick: '=',
+      plothover: '='
     },
     link: function(scope, element, attributes) {
       var height, init, onDatasetChanged, onOptionsChanged, plot, plotArea, width;
@@ -69,20 +69,20 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
 
       var onClickChange = function(listener) {
         if (listener) {
-          addGridEventListener('plotclick', 'clickable', scope.onclick);
+          addGridEventListener('plotclick', 'clickable', scope.plotclick);
         }
       };
 
       var onHoverChange = function(listener) {
         if (listener) {
-          addGridEventListener('plothover', 'hoverable', scope.onhover);
+          addGridEventListener('plothover', 'hoverable', scope.plothover);
         }
       };
 
       scope.$watch('options', onOptionsChanged, true);
       scope.$watch('dataset', onDatasetChanged, true);
-      scope.$watch('onPlotClick', onClickChange);
-      scope.$watch('onPlotClick', onHoverChange);
+      scope.$watch('plotclick', onClickChange);
+      scope.$watch('plothover', onHoverChange);
     }
   };
 });
