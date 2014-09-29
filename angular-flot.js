@@ -63,7 +63,7 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
       onDatasetChanged = function(newDataset, oldDataset) {
         if (newDataset === oldDataset) return;
         if (plot) {
-          plot.setData(dataset);
+          plot.setData(newDataset);
           plot.setupGrid();
           plot.draw();
         } else {
