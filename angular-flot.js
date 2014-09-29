@@ -6,8 +6,8 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
       dataset: '=',
       options: '=',
       callback: '=',
-      onclick: '=?',
-      onhover: '=?'
+      onPlotClick: '=?',
+      onPlotHover: '=?'
     },
     link: function(scope, element, attributes) {
       var height, init, onDatasetChanged, onOptionsChanged, plot, plotArea, width;
@@ -39,7 +39,7 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
         }
         scope.options.grid[eventEnableKey] = true;
         plotArea.on(eventName, function(event, pos, item) {
-          rootScope.$apply(callback);
+          $rootScope.$apply(callback);
         });
       };
 
