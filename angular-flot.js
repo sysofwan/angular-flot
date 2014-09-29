@@ -1,4 +1,4 @@
-angular.module('sysofwan.angularFlot', []).directive('flot', function($rootScope) {
+angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScope) {
   return {
     restrict: 'EA',
     template: '<div></div>',
