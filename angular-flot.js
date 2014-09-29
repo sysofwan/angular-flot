@@ -43,14 +43,6 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
         });
       };
 
-      if (scope.onclick) {
-        addGridEventListener('plotclick', 'clickable', scope.onclick);
-      }
-
-      if (scope.onhover) {
-        addGridEventListener('plothover', 'hoverable', scope.onhover);
-      }
-
       init = function() {
         var plotObj;
         plotObj = $.plot(plotArea, scope.dataset, scope.options);
@@ -75,8 +67,22 @@ angular.module('sysofwan.angular-flot', []).directive('flot', function($rootScop
         plot = init();
       };
 
+      var onClickChange = function(listener) {
+        if (listener) {
+          addGridEventListener('plotclick', 'clickable', scope.onclick);
+        }
+      };
+
+      var onHoverChange = function(listener) {
+        if (listener) {
+          addGridEventListener('plothover', 'hoverable', scope.onhover);
+        }
+      };
+
       scope.$watch('options', onOptionsChanged, true);
       scope.$watch('dataset', onDatasetChanged, true);
+      scope.$watch('onclick', onClickChange);
+      scope.$watch('onhover', onHoverChange);
     }
   };
 });
